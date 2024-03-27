@@ -1,10 +1,10 @@
 # 장고 복습 시트
 
-**CRUD**
+- CRUD
 
->소프트웨어가 가지는 기본적인 데이터 처리 기능
+    >소프트웨어가 가지는 기본적인 데이터 처리 기능
 
-> 저장,조회,갱신,삭제
+    > 저장,조회,갱신,삭제
 
 - 프로젝트 생성 루틴
 
@@ -124,9 +124,7 @@
                 # 주소는 template 밑에 articles 밑에 index.html를 읽어라
             ```
 
-**데이터 흐름에 따라 코드를 작성하라**
-
-> URLs -> Views -> Template
+**데이터 흐름에 따라 코드를 작성하라(URLs -> Views -> Template)**
 
 - HTML의 콘텐츠를 변수 값에 따라 바꾸기
 
@@ -154,7 +152,7 @@
 
     if 함수
     {% if  %}
-        {% else %}
+    {% else %}
     {% endif %}
     ```
 
@@ -163,16 +161,14 @@
     ```
     1.부모
         {% block content %}
-            여기에 html 적음
         {% endblock content %}
+        ! 이후 body에 그냥 저렇게 적음 content는 걍 이름
 
     2.자식
         {% extends "부모의 주소 ex base.html" %}
         {% block content %}
             여기에 html 적음
         {% endblock content %}
-
-    18:38
     ```
 
 - 요청과 응답
@@ -197,7 +193,7 @@
 
     > input type 속성 값에 따라 다양한 유형의 입력 데이터 받음
 
-    > id는 input이 여러개일 경우, 판별해주는 꼬리표
+    > id는 input이 여러개일 경우, 판별해주는 꼬리표(CSS에서 사용)
 
 - Query string parameters
 
@@ -218,13 +214,15 @@ class 클래스이름(models.Model):
     열의 이름 = models.타입종류(제약조건)
 ```
 
-> 예시
-    > CharField(max_length=) 길이제한 문자열
-    > TextField() 글자수 많은 문자열
-    > DateTimeField() 날짜와 시간
-        >> auto_now 데이터 저장마다 저장
-        >> auto_now_add 데이터가 처음 생성될 때만 저장
+> CharField(max_length=) 길이제한 문자열
 
+> TextField() 글자수 많은 문자열
+
+> DateTimeField() 날짜와 시간
+
+>> auto_now 데이터 저장마다 저장
+
+>> auto_now_add 데이터가 처음 생성될 때만 저장
 
 - Migrations
 
