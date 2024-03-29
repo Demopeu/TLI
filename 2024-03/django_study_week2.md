@@ -170,3 +170,68 @@ detail.html
     article = Article.objects.get(pk=pk)
     return redirect('articles:detail',article.pk)
     ```
+
+    ---
+
+    # 장고 복습 7일차
+
+    ## 장고 폼
+
+   > as_div,as_table,as_p,as_ul 지원 
+
+   ## 위젯
+
+   > input의 표현을 담당
+
+   > form.py에서 디자인을 담당
+
+   ## 장고 모델 폼
+
+   > Form(DB에 저장하지 않을 때) vs ModelForm(DB에 저장)
+
+   ```
+   class 이름(form.ModelForm):
+    class Meta:
+        model = 'model이름'
+        fields = '__all__'
+        # fields = ('title','content') #그 모델에서 어떤 필드를출력할 껀지
+        # exclude = ('title') 이런식으로 전체에서 지워주는 형식도 가능
+   ```
+
+   > 두가지 함수 합치기
+
+    ```
+   def new(request):
+    form = ArticleForm()
+    context = {
+        'form':form,
+    }
+    return render(request, 'articles/new.html',context)
+
+    def create(request):
+    if form.is_valid():
+        article = form.save()
+        return redirect('articles:detail', article.pk)
+    
+    context =  {
+        'form':form,
+    }
+    return render(request,'articles/new.html',context)
+
+    >>> 하나로 합치기
+
+    def create(request):
+        if request.method == 'POST':
+            form = ArticleForm(request.POST)
+            if form.is_valid():
+                article = form.save()
+                return redirect('articles:detail',article.pk)
+        else:
+            form = ArticleForm()
+        context = {
+            'form':form,
+        }
+        return render(request,'articles/create.html',context)
+    ```
+
+
