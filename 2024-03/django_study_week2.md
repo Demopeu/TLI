@@ -70,7 +70,7 @@ article.content = 'django!'
 
 3. 한 줄 쓰기
 
-``Article.object.create(title='third',content='django!')``
+``Article.objects.create(title='third',content='django!')``
 
 ### 데이터 수정
 
